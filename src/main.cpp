@@ -5,4 +5,7 @@
 
 int main()
 {
+    std::cout << "Meu cu." << std::endl;
+
+    return 0;
 }
