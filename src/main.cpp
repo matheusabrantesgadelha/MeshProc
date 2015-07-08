@@ -5,7 +5,7 @@
 
 int main()
 {
-    std::cout << "Meu cu." << std::endl;
+    std::cout << "only a brief test of time." << std::endl;
 
     return 0;
 }
