@@ -15,12 +15,15 @@ class TVertex {
 		typedef typename TMesh::HalfEdge __HalfEdge__;
 		typedef typename TMesh::VertexContent __VertexContent__;
 
-        glm::vec3 position;
-		std::vector< std::weak_ptr<__HalfEdge__> > outHalfEdges;
+		TVertex( __VertexContent__ _content, glm::vec3 _position ) 
+			: data( _content ), position( _position ){}
+
+		TVertex( glm::vec3 _position ) 
+			: position( _position ){}
 
         __VertexContent__ data;
-
-		TVertex( __VertexContent__ _content ) : data( _content ){}
+        glm::vec3 position;
+		std::vector< __HalfEdge__* > outHalfEdges;
 };
 
 
