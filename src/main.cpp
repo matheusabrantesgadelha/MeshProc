@@ -3,9 +3,16 @@
 #include <list>
 #include <memory>
 
+#include "Mesh.h"
+
 int main()
 {
-    std::cout << "only a brief test of time." << std::endl;
+	Mesh<int> mesh;
+	Mesh<int>::MeshVertex vertex( 15 );
+
+	mesh.vertices.push_back( vertex );
+	for( auto v : mesh.vertices )
+		std::cout << v.data << std::endl;
 
     return 0;
 }

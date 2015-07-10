@@ -61,7 +61,7 @@ flags = [
 'c++',
 #My directories
 '-I',
-'glm',
+'include',
 ]
 
 
