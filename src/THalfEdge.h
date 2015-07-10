@@ -6,8 +6,8 @@
 #define MESHPROC_HALFEDGE_H
 
 template <class TMesh>
-class HalfEdge {
-	typedef typename TMesh::MeshVertex __Vertex__;
+class THalfEdge {
+	typedef typename TMesh::Vertex __Vertex__;
 
 	public:
 		

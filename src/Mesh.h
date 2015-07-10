@@ -6,23 +6,23 @@
 #ifndef MESHPROC_MESH_H
 #define MESHPROC_MESH_H
 
-#include "HalfEdge.h"
-#include "Vertex.h"
+#include "THalfEdge.h"
+#include "TVertex.h"
 
 template< typename T >
 class Mesh
 {
 	public:
 		typedef Mesh<T> Self;
-		typedef HalfEdge<Self> MeshHalfEdge;
-		typedef Vertex<Self> MeshVertex;
-		typedef T MeshVertexContent;
+		typedef THalfEdge<Self> HalfEdge;
+		typedef TVertex<Self> Vertex;
+		typedef T VertexContent;
 
 		Mesh()
 		{
 		}
 
-		std::vector<MeshVertex> vertices;
+		std::vector<Vertex> vertices;
 };
 
 

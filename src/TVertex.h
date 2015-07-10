@@ -10,17 +10,17 @@
 #include <glm/vec3.hpp>
 
 template <class TMesh>
-class Vertex {
+class TVertex {
     public:
-		typedef typename TMesh::MeshHalfEdge __HalfEdge__;
-		typedef typename TMesh::MeshVertexContent __VertexContent__;
+		typedef typename TMesh::HalfEdge __HalfEdge__;
+		typedef typename TMesh::VertexContent __VertexContent__;
 
         glm::vec3 position;
 		std::vector< std::weak_ptr<__HalfEdge__> > outHalfEdges;
 
         __VertexContent__ data;
 
-		Vertex( __VertexContent__ _content ) : data( _content ){}
+		TVertex( __VertexContent__ _content ) : data( _content ){}
 };
 
 
