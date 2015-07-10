@@ -8,15 +8,19 @@
 int main()
 {
 	Mesh<int> mesh;
-	Mesh<int>::Vertex vertex( 15 );
 
-	mesh.vertices.push_back( vertex );
-	mesh.vertices.push_back( Mesh<int>::Vertex(18) );
-	mesh.vertices.push_back( Mesh<int>::Vertex(18) );
-	mesh.vertices.push_back( Mesh<int>::Vertex(18) );
+	std::vector<std::weak_ptr<Mesh<int>::Vertex>> vertices;
+	std::shared_ptr<Mesh<int>::Vertex> vertex = std::make_shared<Mesh<int>::Vertex>(87);
 
-	for( auto v : mesh.vertices )
-		std::cout << v.data << std::endl;
+	mesh.addVertex(vertex);
+	mesh.addVertex(std::make_shared<Mesh<int>::Vertex>(123));
+	//mesh.addVertex(new Mesh<int>::Vertex(18));
+	//mesh.addVertex(new Mesh<int>::Vertex(198987));
+
+	//for( auto v : mesh.vertices )
+	//	std::cout << v.data << std::endl;
+
+	mesh.printVerticesData();
 
     return 0;
 }

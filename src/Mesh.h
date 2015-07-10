@@ -6,6 +6,8 @@
 #ifndef MESHPROC_MESH_H
 #define MESHPROC_MESH_H
 
+#include <vector>
+
 #include "THalfEdge.h"
 #include "TVertex.h"
 
@@ -22,7 +24,9 @@ class Mesh
 		{
 		}
 
-		std::vector<Vertex> vertices;
+		void addVertex(std::shared_ptr<Vertex> vertex){ vertices.push_back(vertex);}
+		void printVerticesData(){for(int i=0; i<vertices.size();++i) std::cout << vertices[i]->data << std::endl;}
+		std::vector<std::shared_ptr<Vertex> > vertices;
 };
 
 
