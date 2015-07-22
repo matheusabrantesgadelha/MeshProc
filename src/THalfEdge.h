@@ -6,7 +6,7 @@
 #define MESHPROC_HALFEDGE_H
 
 #include <memory>
-
+#include <iostream>
 
 template <class TMesh>
 class THalfEdge {
@@ -17,6 +17,14 @@ class THalfEdge {
 	public:
 
 		THalfEdge(){}
+
+		friend std::ostream& operator<<( std::ostream& _out, THalfEdge _he )
+		{
+			_out << "{ Vertex source: " << _he.source->id 
+				<< ", Vertex target: " << _he.target->id 
+				<< " }";
+			return _out;
+		}
 		
 		__Vertex__* source;
 		__Vertex__* target;

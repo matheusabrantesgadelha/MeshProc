@@ -24,6 +24,8 @@ class TVertex {
         __VertexContent__ data;
         glm::vec3 position;
 		std::vector< __HalfEdge__* > outHalfEdges;
+
+		int id;
 };
 
 
