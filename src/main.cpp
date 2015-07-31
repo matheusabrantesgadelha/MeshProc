@@ -3,28 +3,33 @@
 #include <list>
 #include <memory>
 
-#include "Mesh.h"
+#include "GenericMesh.h"
+#include "StandardMesh.h"
+#include "MeshLoader.h"
 
 int main()
 {
-	Mesh<int> mesh;
+	GenericMesh<int> mesh;
+	StandardMesh sm;
 
-	Mesh<int>::Vertex v0(0, glm::vec3(0,1,0));
-	Mesh<int>::Vertex v1(1, glm::vec3(1,1,0));
-	Mesh<int>::Vertex v2(2, glm::vec3(1,0,0));
-	Mesh<int>::Vertex v3(3, glm::vec3(0,0,0));
+	loadObj( sm, "suzanne.obj" );
+
+	GenericMesh<int>::Vertex v0(0, glm::vec3(0,1,0));
+	GenericMesh<int>::Vertex v1(1, glm::vec3(1,1,0));
+	GenericMesh<int>::Vertex v2(2, glm::vec3(1,0,0));
+	GenericMesh<int>::Vertex v3(3, glm::vec3(0,0,0));
 
 	mesh.addVertex(v0);
 	mesh.addVertex(v1);
 	mesh.addVertex(v2);
 	mesh.addVertex(v3);
 
-	Mesh<int>::Face f0;
+	GenericMesh<int>::Face f0;
 	f0.addVertex(&mesh.vertices[0]);
 	f0.addVertex(&mesh.vertices[3]);
 	f0.addVertex(&mesh.vertices[1]);
 
-	Mesh<int>::Face f1;
+	GenericMesh<int>::Face f1;
 	f1.addVertex(&mesh.vertices[1]);
 	f1.addVertex(&mesh.vertices[3]);
 	f1.addVertex(&mesh.vertices[2]);
@@ -56,7 +61,8 @@ int main()
 		std::cout << he << std::endl;
 	}
 
-	mesh.printVerticesData();
+	mesh.writeObj( "teste.obj" );
+	sm.writeObj( "newSuzanne.obj" );
 
     return 0;
 }

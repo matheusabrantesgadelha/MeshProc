@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <iostream>
+#include <fstream>
 
 #include "THalfEdge.h"
 #include "TVertex.h"
@@ -14,17 +15,17 @@
 #include "TEdge.h"
 
 template< typename T >
-class Mesh
+class GenericMesh
 {
 	public:
-		typedef Mesh<T> Self;
+		typedef GenericMesh<T> Self;
 		typedef THalfEdge<Self> HalfEdge;
 		typedef TFace<Self> Face;
 		typedef TEdge<Self> Edge;
 		typedef TVertex<Self> Vertex;
 		typedef T VertexContent;
 
-		Mesh()
+		GenericMesh()
 		{
 		}
 
@@ -36,6 +37,25 @@ class Mesh
 		void addEdge(Edge _edge){ edges.push_back(_edge);}
 		void addFace(Face _face){ 
 			faces.push_back(_face);
+		}
+
+		void writeObj( const std::string _path )
+		{
+			std::ofstream objFile;
+			objFile.open( _path );
+			for( Vertex v : vertices )
+			{
+				objFile << "v " << v.position.x << " " 
+						<< v.position.y << " " 
+						<< v.position.z << std::endl;
+			}
+			for( Face f: faces )
+			{
+				objFile << "f ";
+				for( Vertex* v : f.vertices )
+					objFile << v->id+1 << " ";
+				objFile << std::endl;
+			}
 		}
 
 		void buildMesh()
@@ -103,7 +123,5 @@ class Mesh
 		std::vector<Face> faces;
 		std::vector<HalfEdge> halfedges;
 };
-
-
 
 #endif
